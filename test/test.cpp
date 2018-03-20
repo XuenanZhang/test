@@ -16,6 +16,7 @@ public:
 
 int main()
 {
+
 	std::vector<int> vec(6);
 	for (int i = 0; i < 10; i++) {
 		vec.push_back(i);
