@@ -1,0 +1,2 @@
+g++ -g -v test.cpp -o test && gdb test
+

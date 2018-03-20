@@ -1,0 +1,37 @@
+#! /bin/sh
+echo "1 : game"
+echo "2 : session"
+echo "3 : gate"
+echo "4 : db"
+
+while true
+do
+	read -p "please input a number: " id
+	case ${id} in
+		0) break;;
+		1) server="GameServer";;
+		2) server="SessionServer";;
+		3) server="GateServer";;
+		4) server="DBServer";;
+		*) echo "select is not exist !";;
+	esac
+
+	if [ "$server" != "" ]
+	then
+		break
+	fi
+done
+
+sh RunServer.sh kill
+#sleep 0.5
+sh RunServer.sh start
+
+if [ "$server" != "" ]
+then
+	pid=`pgrep ${server}`
+	if [ "$pid" != "" ]
+	then
+		gdb attach $pid
+	fi
+fi
+
